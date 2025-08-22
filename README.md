@@ -38,6 +38,19 @@ Dieses Projekt dient zur Messung und Überwachung von Heizungsdaten mit einem Ra
    ./heizung_quickfix.sh
    ```
 
+## Aktualisierung
+Um das Repository auf dem Raspberry Pi zu aktualisieren:
+```bash
+cd Pi5-Heizungs-Messer
+git pull origin main
+```
+Falls Änderungen an der config.ini gemacht wurden, sichere sie vorher:
+```bash
+cp config.ini config.ini.backup
+git pull origin main
+# Vergleiche und übernehme deine Änderungen manuell
+```
+
 ## Nutzung
 - Starte das Hauptskript zur Heizungsüberwachung:
   ```bash
