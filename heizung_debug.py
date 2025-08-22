@@ -148,24 +148,19 @@ def check_config():
     """Prüfe Konfiguration"""
     print_header("KONFIGURATION CHECK")
     
-    config_file = "/home/pi/pi5-sensors/config.ini"
-    
+    config_file = os.path.join(os.path.dirname(__file__), "config.ini")
     if not os.path.exists(config_file):
         print(f"❌ config.ini nicht gefunden: {config_file}")
         return None
-        
     try:
         config = configparser.ConfigParser()
         config.read(config_file)
-        
         print("📋 Konfigurierte Sensoren:")
-        
         # Database Config
         if 'database' in config:
             print("\n🗄️ Database:")
             for key, value in config['database'].items():
                 print(f"   {key}: {value}")
-        
         # Labels Config
         if 'labels' in config:
             print("\n🏷️ Sensor Labels:")
@@ -178,7 +173,6 @@ def check_config():
         else:
             print("❌ Keine [labels] Sektion gefunden")
             return None
-            
     except Exception as e:
         print(f"❌ Config Fehler: {e}")
         return None
